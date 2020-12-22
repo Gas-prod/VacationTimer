@@ -1,0 +1,160 @@
+body, .cadre
+{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "roboto";
+    color: white;
+}
+p
+{
+    margin: 0;
+    padding: 0;
+}
+.cadre
+{
+    background-color: #08081e;
+}
+.header
+{
+    width: 100%;
+    height: 12.5%;
+    padding: 30px 30px 30px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.vacation-select
+{
+    width: calc((100% - 30px) - (12.5vh - 60px));
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 45px;
+    background-color: #434982;
+    color: white;
+    box-shadow: 20px 20px 15px rgba(1, 1, 30, 0.75);
+    font-size: 3em;
+    box-sizing: border-box;
+    padding: 30px 30px 30px 30px;
+}
+.location-button
+{
+    width: calc(12.5vh - 60px);
+    height: calc(12.5vh - 60px);
+    margin: 0;
+    margin-left: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 45px;
+    background-color: #434982;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: all 0.15s;
+    cursor: pointer;
+    box-shadow: 20px 20px 15px rgba(1, 1, 30, 0.75);
+}
+.location-button:hover
+{
+    opacity: .5;
+}
+.location-img
+{
+    width: 45%;
+    height: 45%;
+}
+.content
+{
+    width: 100%;
+    height: 87.5%;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+}
+.text
+{
+    text-align: left;
+    width: 100%;
+    height: 30%;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+}
+.timer-box
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-color: #434982;
+    border-radius: 45px;
+    cursor: pointer;
+    box-shadow: 20px 20px 15px rgba(1, 1, 30, 0.75);
+}
+.timer
+{
+    font-size: 4em;
+}
+
+
+
+.shadow
+{
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: rgba(0, 0, 0, 0.541);
+    display: none;
+}
+.locate-block {
+    position: absolute;
+    top: 25%; left: 25%; right: 25%; bottom: 25%;
+    background: rgb(224, 224, 224);
+    border: 2px outset rgb(0, 0, 0);
+}
+.departement-select 
+{
+    width: 60%;
+    margin: 10px auto;
+    background: #333;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4), 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+.departement-select input 
+{
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    color: #fff;
+}
+.search-input
+{
+    outline: none;
+}
+.suggestions 
+{
+    border-top: 2px solid #999;
+}
+.suggestions > div 
+{
+    padding: 15px;
+    font-size: 20px;
+    color: #fff;
+    border-top: 1px solid #666;
+    cursor: pointer;
+}
+.suggestions > div:hover 
+{
+    background-color: #1e4dd4;
+}
+.end-location
+{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    cursor: pointer;
+}

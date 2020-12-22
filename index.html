@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>French vacation timer</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    
+    <body onload="Locate()">
+        <div class="cadre">
+            <div class="header">       
+                <select name="vacances" class="vacation-select">
+                    <option value="next">Prochaines vacances</option>
+                    <option value="toussaint">Vacances de la Toussaint</option>
+                    <option value="noel">Vacances de Noël</option>
+                    <option value="hiver">Vacances d'Hiver</option>
+                    <option value="printemps">Vacances de Printemps</option>
+                    <option value="ascension">Pont de l'Ascension</option>
+                    <option value="ete">Vacances d'Été</option>
+                </select>
+                <button class="location-button" onclick="Locate()"><img src="img/location_icon.svg" class="location-img"></img></button>
+            </div>
+
+            <div class="content">
+                <p class="text">Les prochaines vacances<br>sont dans :</p>
+                <div class="timer-box"><p class="timer">00 jours - 00 h - 00 min</p></div>
+            </div>
+            <div class="shadow">
+                <div class="locate-block">
+                    <div class="departement-select">  
+                        <input class="search-input" type="text" placeholder="Votre département..." spellcheck="false"/>
+                        <div class="suggestions"></div>
+                    </div>
+                
+                <button class="end-location">Terminer</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
