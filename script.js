@@ -18,6 +18,7 @@ var daysLeft;
 var hoursLeft;
 var minutesLeft;
 var secondsLeft;
+var keyboardOpen = false;
 
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
@@ -396,9 +397,12 @@ function printTime(){
 }
 
 window.onresize = function(){
-    locateBlock.style.borderRadius = "0";
-    locateBlock.style.top = "0";
-    locateBlock.style.bottom = "0";
-    locateBlock.style.left = "0";
-    locateBlock.style.right = "0";
+    if(keyboardOpen == false){
+        keyboardOpen = true;
+        locateBlock.classList.add("locate-block1");
+    }
+    else{
+        keyboardOpen = false;
+        locateBlock.classList.remove("locate-block1");
+    }
 }

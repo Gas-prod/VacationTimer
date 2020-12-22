@@ -134,6 +134,14 @@ p
     border-radius: 45px;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.60);
 }
+.locate-block1
+{
+    border-radius: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 .departement-select 
 {
     width: 80%;
