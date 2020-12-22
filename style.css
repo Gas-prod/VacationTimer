@@ -141,9 +141,9 @@ p
     margin-left: 10%;
     margin-right: 10%;
     background-color: #434982;
-    border-radius: 40px;
+    border-radius: 35px;
     overflow: hidden;
-    box-shadow: 20px 20px 20px #050018b8;
+    box-shadow: 20px 20px 30px #05001869;
     max-height: 70%;
     overflow: hidden;
 }
@@ -183,8 +183,8 @@ p
 .end-location
 {
     position: absolute;
-    bottom: 3%;
-    right: 3%;
+    bottom: 25px;
+    right: 25px;
     width: 28%;
     height: 12.5%;
     cursor: pointer;
@@ -194,7 +194,7 @@ p
     background-color: #434982;
     font-size: 3em;
     transition: all 0.15s;
-    box-shadow: 15px 15px 20px #050018b8;
+    box-shadow: 15px 15px 20px #05001869;
 }
 .end-location:hover
 {

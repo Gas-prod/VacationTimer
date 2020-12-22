@@ -25,6 +25,7 @@ const suggestionsPanel = document.querySelector(".suggestions");
 const endLocation = document.querySelector(".end-location");
 const vacSelect = document.querySelector(".vacation-select");
 const timer = document.querySelector(".timer");
+const locateBlock = document.querySelector(".locate-block");
 
 const departements = [
     {name: "Ain (01)"},
@@ -392,4 +393,12 @@ function printTime(){
     else{
         timer.innerHTML = daysLeft + " jours - " + hoursLeft + " h - " + minutesLeft + " min";
     }
-}   
+}
+
+window.onresize = function(){
+    locateBlock.style.borderRadius = "0";
+    locateBlock.style.top = "0";
+    locateBlock.style.bottom = "0";
+    locateBlock.style.left = "0";
+    locateBlock.style.right = "0";
+}
