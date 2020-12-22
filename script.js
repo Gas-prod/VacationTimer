@@ -278,55 +278,54 @@ function FindSchoolYear() {
     }
 }
 
+//quand on clique sur la liste des vacances
+function vacChange(){
+    selectedVac = vacSelect.options[vacSelect.selectedIndex].text;
+    console.log(selectedVac);
+
+    if(selectedVac == "Prochaines vacances"){
+        vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&facet=annee_scolaire&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&exclude.population=Enseignants";
+        RequestSend(vacUrl);
+
+        request.onload = function(){
+            vacFind = request.response;
+            console.log(vacFind);
+            vacArray = [];
+
+            for (var i = 0; i < vacFind["records"].length; i++){
+                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
+            }
+            console.log(vacArray);
+
+            vacArray = [...vacArray].sort(function(a, b) {
+                return a - b;
+            });
+            console.log(vacArray);
+
+            vacDate = vacArray.find(element => element > date);
+            console.log(vacDate);
+
+            setInterval(printTime, 1000);
+        }
+    }
+    else{
+        vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&rows=15&facet=start_date&facet=location&facet=annee_scolaire&facet=population&facet=description&facet=end_date&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&refine.description=" + selectedVac + "&exclude.population=Enseignants";
+        RequestSend(vacUrl);
+        
+        request.onload = function(){
+            vacFind = request.response;
+            console.log(vacFind);
+
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
+            console.log(vacDate);
+
+            setInterval(printTime, 1000);
+        }
+    }
+}
 function VacationFind() {
     FindSchoolYear();
     console.log(schoolYear);
-
-    //quand on clique sur la liste des vacances
-    vacSelect.addEventListener("click", function(){
-        selectedVac = vacSelect.options[vacSelect.selectedIndex].text;
-        console.log(selectedVac);
-
-        if(selectedVac == "Prochaines vacances"){
-            vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&facet=annee_scolaire&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&exclude.population=Enseignants";
-            RequestSend(vacUrl);
-
-            request.onload = function(){
-                vacFind = request.response;
-                console.log(vacFind);
-                vacArray = [];
-
-                for (var i = 0; i < vacFind["records"].length; i++){
-                    vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
-                }
-                console.log(vacArray);
-
-                vacArray = [...vacArray].sort(function(a, b) {
-                    return a - b;
-                });
-                console.log(vacArray);
-
-                vacDate = vacArray.find(element => element > date);
-                console.log(vacDate);
-
-                setInterval(printTime, 1000);
-            }
-        }
-        else{
-            vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&rows=15&facet=start_date&facet=location&facet=annee_scolaire&facet=population&facet=description&facet=end_date&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&refine.description=" + selectedVac + "&exclude.population=Enseignants";
-            RequestSend(vacUrl);
-            
-            request.onload = function(){
-                vacFind = request.response;
-                console.log(vacFind);
-
-                vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
-                console.log(vacDate);
-
-                setInterval(printTime, 1000);
-            }
-        }
-    })
 
     if(selectedVac == "Prochaines vacances"){
         vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&facet=annee_scolaire&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&exclude.population=Enseignants";
@@ -393,4 +392,4 @@ function printTime(){
     else{
         timer.innerHTML = daysLeft + " jours - " + hoursLeft + " h - " + minutesLeft + " min";
     }
-}
+}   
