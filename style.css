@@ -17,7 +17,7 @@ p
 }
 .cadre
 {
-    background-color: #0e0e33;
+    background-color: #1a1d3d;
 }
 .header
 {
@@ -32,7 +32,7 @@ p
 {
     width: calc((100% - 30px) - (12.5vh - 60px));
     height: 100%;
-    box-shadow: 20px 20px 20px #050018b8;
+    box-shadow: 20px 20px 20px #0500167d;
     border-radius: 45px;
     position: relative;
 }
@@ -51,7 +51,7 @@ p
     outline: none;
     border: none;
     border-radius: 45px;
-    background-color: #434982;
+    background-color: #3b437d;
     color: white;
     font-size: 3em;
     box-sizing: border-box;
@@ -70,14 +70,14 @@ p
     padding: 0;
     border: none;
     border-radius: 45px;
-    background-color: #434982;
+    background-color: #3b437d;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     transition: opacity 0.15s;
     cursor: pointer;
-    box-shadow: 20px 20px 20px #050018b8;
+    box-shadow: 20px 20px 20px #0500167d;
 }
 .location-button:hover
 {
@@ -112,10 +112,10 @@ p
     align-items: center;
     width: 100%;
     height: 20%;
-    background-color: #434982;
+    background-color: #3b437d;
     border-radius: 45px;
     cursor: pointer;
-    box-shadow: 20px 20px 20px #050018b8;
+    box-shadow: 20px 20px 20px #0500167d;
 }
 .timer
 {
@@ -126,13 +126,13 @@ p
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
     background-color: rgba(0, 0, 0, 0.74);
-    display: none;
+    display: block;
 }
 .locate-block 
 {
     position: absolute;
     top: 32.5%; left: 5%; right: 5%; bottom: 32.5%;
-    background-color: #0e0e33;
+    background-color:#1a1d3d;
     border-radius: 45px;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.60);
 }
@@ -144,22 +144,18 @@ p
     left: 0;
     right: 0;
 }
-.locate-block > .departement-select
-{
-    max-height: 80%;
-}
 .departement-select 
 {
     width: 80%;
     margin-top: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #434982;
+    background-color: #3b437d;
     border-radius: 35px;
     overflow: hidden;
-    box-shadow: 20px 20px 30px #05001869;
-    max-height: 70%;
+    box-shadow: 20px 20px 30px #0500167d;
     overflow: hidden;
+    max-height: 75%;
 }
 .search-input
 {
@@ -179,7 +175,6 @@ p
 }
 .suggestions
 {
-    max-height: 30vh;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -207,10 +202,10 @@ p
     border: none;
     border-radius: 20px;
     color: white;
-    background-color: #434982;
+    background-color: #3b437d;
     font-size: 3em;
     transition: all 0.15s;
-    box-shadow: 15px 15px 20px #05001869;
+    box-shadow: 15px 15px 20px #0500167d;
     display: flex;
     align-items: center;
     justify-content: center;
