@@ -9,6 +9,7 @@ html, body, .cadre
     margin: 0;
     padding: 0;
     color: white;
+    overflow: hidden;
 }
 p
 {
@@ -155,7 +156,9 @@ p
     overflow: hidden;
     box-shadow: 20px 20px 30px #0500167d;
     overflow: hidden;
-    max-height: 75%;
+    max-height: calc(100% - 175px);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .search-input
 {
@@ -172,11 +175,6 @@ p
     -webkit-appearance: none;
     color: #fff;
     box-shadow: 0px 10px 35px 20px #0700244d;
-}
-.suggestions
-{
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 .suggestions > div 
 {
