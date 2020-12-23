@@ -33,7 +33,7 @@ p
 {
     width: calc((100% - 30px) - (12.5vh - 60px));
     height: 100%;
-    box-shadow: 20px 20px 20px #0500167d;
+    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
     border-radius: 45px;
     position: relative;
 }
@@ -77,7 +77,7 @@ p
     outline: none;
     transition: opacity 0.15s;
     cursor: pointer;
-    box-shadow: 20px 20px 20px #0500167d;
+    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
 }
 .location-button:hover
 {
@@ -114,7 +114,7 @@ p
     background-color: #40444b;
     border-radius: 45px;
     cursor: pointer;
-    box-shadow: 20px 20px 20px #0500167d;
+    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
 }
 .timer
 {
@@ -133,7 +133,7 @@ p
     top: 32.5%; left: 5%; right: 5%; bottom: 32.5%;
     background-color:#202225;
     border-radius: 45px;
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.60);
+    box-shadow: 16px 16px 25px 0px #000000b0;
 }
 .locate-block1
 {
@@ -152,7 +152,7 @@ p
     background-color: #40444b;
     border-radius: 35px;
     overflow: hidden;
-    box-shadow: 20px 20px 30px #0500167d;
+    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
     overflow: hidden;
     max-height: calc(100% - 175px);
     overflow-x: hidden;
@@ -171,7 +171,7 @@ p
     -moz-appearance: none;
     -webkit-appearance: none;
     color: #fff;
-    box-shadow: 0px 10px 35px 20px #0700244d;
+    /* box-shadow: 0px 10px 35px 20px #0b0b0d4f; */
 }
 .suggestions > div 
 {
@@ -200,7 +200,7 @@ p
     background-color: #40444b;
     font-size: 3em;
     transition: all 0.15s;
-    box-shadow: 15px 15px 20px #0500167d;
+    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
     display: flex;
     align-items: center;
     justify-content: center;
