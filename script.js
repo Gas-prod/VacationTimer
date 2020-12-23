@@ -141,36 +141,31 @@ function RequestSend(url){
 
 //renseignement ou modification du département
 function Locate(){
-    //geolocalisation
-    function GeoFindMe() {
+    //localisation
+    function success(position) {
+        console.log("geolocation success");
+    
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+    
+        console.log("latitude : " + latitude);
+        console.log("longitude : " + longitude);
+    
+        depUrl = "https://api-adresse.data.gouv.fr/reverse/?lon=" + longitude +"&lat=" + latitude;
 
-        function success(position) {
-            console.log("geolocation success");
-    
-            var latitude  = position.coords.latitude;
-            var longitude = position.coords.longitude;
-    
-            console.log("latitude : " + latitude);
-            console.log("longitude : " + longitude);
-    
-            depUrl = "https://api-adresse.data.gouv.fr/reverse/?lon=" + longitude +"&lat=" + latitude;
-    
-            RequestSend(depUrl);
-        }
-      
-        function error() {
-            console.log("geolocation error")
-        }
-      
-        if (!navigator.geolocation) {
-            console.log("geolocation not supported")
-        } else {
-            console.log("locating...")
-            navigator.geolocation.getCurrentPosition(success, error);
-        }
+        RequestSend(depUrl);
     }
-    
-    GeoFindMe();
+      
+    function error() {
+        console.log("geolocation error")
+    }
+      
+    if (!navigator.geolocation) {
+        console.log("geolocation not supported")
+    } else {
+        console.log("locating...")
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
     
     request.onload = function() {
         depFind = request.response;
@@ -184,7 +179,7 @@ function Locate(){
         depName = depFind["features"][0]["properties"]["context"].split(", ")[1];
         console.log("code département : " + depCode);
         console.log("nom département : " + depName);
-        searchInput.value = depName;
+        searchInput.value = depName + " (" + depCode + ")"; // Papa : que se passe t il s'il ne trouve pas le département. Il faut par exemple mettre un département par défaut
     }
 
     locateBlockShadow.style.display = "block";
@@ -248,6 +243,7 @@ function Locate(){
         }
     })
 }
+
 //quand on clique sur terminer
 endLocation.addEventListener("click", function(){
     locateBlockShadow.style.display = "none";
@@ -278,6 +274,8 @@ function FindSchoolYear() {
     else{
         schoolYear = year + "-" + nextYear;
     }
+
+    console.log("année scolaire : " + schoolYear);
 }
 
 //quand on clique sur la liste des vacances
@@ -306,8 +304,6 @@ function vacChange(){
 
             vacDate = vacArray.find(element => element > date);
             console.log(vacDate);
-
-            setInterval(printTime, 1000);
         }
     }
     else{
@@ -320,16 +316,11 @@ function vacChange(){
 
             vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
-
-            setInterval(printTime, 1000);
         }
     }
 }
 function VacationFind() {
-    FindSchoolYear();
-    console.log(schoolYear);
-
-    if(selectedVac == "Prochaines vacances"){
+    if(selectedVac == "Prochaines vacances"){ // Papa : mets en facteur, avant le "if" tout ce que tu peux. vacUrm est la même dans le "if" et dans le "else"
         vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&facet=annee_scolaire&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&exclude.population=Enseignants";
         RequestSend(vacUrl);
 
@@ -349,9 +340,7 @@ function VacationFind() {
             console.log(vacArray);
 
             vacDate = vacArray.find(element => element > date);
-            console.log(vacDate);
-
-            setInterval(printTime, 1000);
+            console.log(vacDate); // Papa : à sortir du "if"
         }
     }
     else{
@@ -364,11 +353,12 @@ function VacationFind() {
 
             vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
-
-            setInterval(printTime, 1000);
         }
     }
 }
+
+setInterval(printTime, 1000);
+
 function DateDiff(date1, date2){
     var tmp = date2 - date1;
 
@@ -383,7 +373,21 @@ function DateDiff(date1, date2){
 
     tmp = Math.floor((tmp - hoursLeft) / 24);
     daysLeft = tmp;
+
+    if(isNaN(secondsLeft)){
+        secondsLeft = "00";
+    }
+    if(isNaN(minutesLeft)){
+        minutesLeft = "00";
+    }
+    if(isNaN(hoursLeft)){
+        hoursLeft = "00";
+    }
+    if(isNaN(daysLeft)){
+        daysLeft = "00";
+    }
 }
+
 function printTime(){
     date = new Date;
     DateDiff(date, vacDate);
