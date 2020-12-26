@@ -19,6 +19,7 @@ var hoursLeft;
 var minutesLeft;
 var secondsLeft;
 var keyboardOpen = false;
+var dateMode = "timer";
 
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
@@ -26,7 +27,9 @@ const suggestionsPanel = document.querySelector(".suggestions");
 const endLocation = document.querySelector(".end-location");
 const vacSelect = document.querySelector(".vacation-select");
 const timer = document.querySelector(".timer");
+const timerBox = document.querySelector(".timer-box");
 const locateBlock = document.querySelector(".locate-block");
+const text = document.querySelector(".text");
 
 const departements = [
     {name: "Ain (01)"},
@@ -197,6 +200,7 @@ function Locate(){
 
         suggestions.forEach(function(suggested) {
             const div = document.createElement("div");
+            div.onclick = "EndLocation()";
             div.innerHTML = suggested.name;
             suggestionsPanel.appendChild(div);
 
@@ -207,6 +211,8 @@ function Locate(){
                 searchInput.value = suggested.name;
                 console.log(depName);
                 console.log(depCode);
+
+                EndLocation();
             });
         });
 
@@ -225,6 +231,7 @@ function Locate(){
 
         suggestions.forEach(function(suggested) {
             const div = document.createElement("div");
+            div.onclick = "EndLocation()";
             div.innerHTML = suggested.name;
             suggestionsPanel.appendChild(div);
 
@@ -235,6 +242,8 @@ function Locate(){
                 searchInput.value = suggested.name;
                 console.log(depName);
                 console.log(depCode);
+
+                EndLocation();
             });
         });
 
@@ -245,23 +254,29 @@ function Locate(){
 }
 
 //quand on clique sur terminer
-endLocation.addEventListener("click", function(){
-    locateBlockShadow.style.display = "none";
-
-    //creation de l'url du referenciel geographique
-    acaUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-referentiel-geographique&q=&rows=1&facet=aca_nom&facet=dep_code&refine.dep_code=" + depCode;
-    RequestSend(acaUrl);
-    //recuperation de l'academie
-    request.onload = function() {
-        acaFind = request.response;
-        console.log(acaFind);
-
-        acaName = acaFind["records"][0]["fields"]["aca_nom"];
-        console.log(acaName);
-
-        VacationFind();
+function EndLocation(){
+    if(depCode == null){
+        alert("Veuillez renseigner votre département");
     }
-})
+    else{
+        locateBlockShadow.style.display = "none";
+
+        //creation de l'url du referenciel geographique
+        acaUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-referentiel-geographique&q=&rows=1&facet=aca_nom&facet=dep_code&refine.dep_code=" + depCode;
+        RequestSend(acaUrl);
+        //recuperation de l'academie
+        request.onload = function() {
+            acaFind = request.response;
+            console.log(acaFind);
+
+            acaName = acaFind["records"][0]["fields"]["aca_nom"];
+            console.log(acaName);
+
+            VacationFind();
+        }
+    }
+    
+}
 
 function FindSchoolYear() {
     var year = date.getFullYear();
@@ -392,11 +407,46 @@ function printTime(){
     date = new Date;
     DateDiff(date, vacDate);
 
-    if(daysLeft == 1){
-        timer.innerHTML = daysLeft + " jour - " + hoursLeft + " h - " + minutesLeft + " min";
+    if(Math.sign(vacDate - date) < 1){
+        dateMode = "date";
+
+        if(selectedVac == "Pont de l'Ascension"){
+            text.innerHTML = "Le " + selectedVac + " est passé depuis le :"
+        }else{
+            text.innerHTML = "Les " + selectedVac + " sont passées depuis le :"
+        }
+    }else{
+        if(dateMode == "date"){
+            if(selectedVac == "Pont de l'Ascension"){
+                text.innerHTML = "Le " + selectedVac + " est le :"
+            }else{
+                text.innerHTML = "Les " + selectedVac + " sont le :"
+            }
+        }else{
+            if(selectedVac == "Pont de l'Ascension"){
+                text.innerHTML = "Le " + selectedVac + " est dans :"
+            }else{
+                text.innerHTML = "Les " + selectedVac + " sont dans :"
+            }
+        }
+    }
+
+    if(dateMode == "timer"){
+        if(daysLeft == 1){
+            timer.innerHTML = daysLeft + " jour - " + hoursLeft + " h - " + minutesLeft + " min";
+        }
+        else{
+            timer.innerHTML = daysLeft + " jours - " + hoursLeft + " h - " + minutesLeft + " min";
+        }
     }
     else{
-        timer.innerHTML = daysLeft + " jours - " + hoursLeft + " h - " + minutesLeft + " min";
+        var frenchDate = vacDate.toLocaleString('fr-FR',{
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        })
+        timer.innerHTML = frenchDate.charAt(0).toUpperCase() + frenchDate.substr(1)
     }
 }
 
@@ -408,5 +458,16 @@ window.onresize = function(){
     else{
         keyboardOpen = false;
         locateBlock.classList.remove("locate-block1");
+    }
+}
+
+function ChangeDateMode(){
+    if(dateMode == "timer"){
+        dateMode = "date";
+        console.log(dateMode);
+    }
+    else if(dateMode == "date" && Math.sign(vacDate - date) == 1){
+        dateMode = "timer";
+        console.log(dateMode);
     }
 }
