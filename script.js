@@ -2,10 +2,11 @@ var depUrl;
 var request = new XMLHttpRequest();
 var depFind;
 var depCode;
-var depName;
+var depName = "...";
 var acaUrl;
 var acaFind;
-var acaName;
+var acaName = "...";
+var zone = "...";
 var vacUrl;
 var vacFind;
 var vacDate;
@@ -30,6 +31,9 @@ const timer = document.querySelector(".timer");
 const timerBox = document.querySelector(".timer-box");
 const locateBlock = document.querySelector(".locate-block");
 const text = document.querySelector(".text");
+const depText = document.querySelector("#dep-name");
+const acaText = document.querySelector("#aca-name");
+const zoneText = document.querySelector("#zone");
 
 const departements = [
     {name: "Ain (01)"},
@@ -204,7 +208,7 @@ function Locate(){
 
             //quand on selectionne un departement
             div.addEventListener("click", function(){
-                depName = suggested.name.split(" ")[0];
+                depName = suggested.name.substring(0, suggested.name.length -5);
                 depCode = suggested.name.substring(suggested.name.length -1, suggested.name.length -3);
                 searchInput.value = suggested.name;
                 console.log(depName);
@@ -235,7 +239,7 @@ function Locate(){
 
             //quand on selectionne un departement
             div.addEventListener("click", function(){
-                depName = suggested.name.split(" ")[0];
+                depName = suggested.name.substring(0, suggested.name.length -5);
                 depCode = suggested.name.substring(suggested.name.length -1, suggested.name.length -3);
                 searchInput.value = suggested.name;
                 console.log(depName);
@@ -317,6 +321,9 @@ function vacChange(){
 
             vacDate = vacArray.find(element => element > date);
             console.log(vacDate);
+
+            zone = vacFind["records"][0]["fields"]["zones"];
+            console.log(zone);
         }
     }
     else{
@@ -329,6 +336,9 @@ function vacChange(){
 
             vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
+
+            zone = vacFind["records"][0]["fields"]["zones"];
+            console.log(zone);
         }
     }
 }
@@ -354,6 +364,9 @@ function VacationFind() {
 
             vacDate = vacArray.find(element => element > date);
             console.log(vacDate); // Papa : à sortir du "if"
+
+            zone = vacFind["records"][0]["fields"]["zones"];
+            console.log(zone);
         }
     }
     else{
@@ -366,6 +379,9 @@ function VacationFind() {
 
             vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
+
+            zone = vacFind["records"][0]["fields"]["zones"];
+            console.log(zone);
         }
     }
 }
@@ -445,6 +461,11 @@ function printTime(){
             day: 'numeric'
         })
         timer.innerHTML = frenchDate.charAt(0).toUpperCase() + frenchDate.substr(1)
+    }
+    if(depText != undefined && acaText != undefined && zoneText != undefined){
+        depText.innerHTML = "Département : " + depName;
+        acaText.innerHTML = "Académie : " + acaName;
+        zoneText.innerHTML = "Zone : " + zone;
     }
 }
 
