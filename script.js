@@ -51,8 +51,6 @@ const departements = [
     {name: "Charente-Maritime (17)"},
     {name: "Cher (18)"},
     {name: "Corrèze (19)"},
-    {name: "Corse-du-Sud (2A)"},
-    {name: "Haute-Corse (2B)"},
     {name: "Côte-d'Or (21)"},
     {name: "Côtes d'Armor (22)"},
     {name: "Creuse (23)"},
