@@ -1,0 +1,16 @@
+{
+    "name": "Vacation Timer",
+    "short_name": "VacTimer",
+    "icons": [
+        {
+          "src": "icon/512x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "lang": "fr",
+    "background_color": "#ececec",
+    "display": "standalone",
+    "theme_color": "#ececec"
+}
