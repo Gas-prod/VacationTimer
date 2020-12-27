@@ -8,7 +8,7 @@
           "sizes": "512x512"
         }
     ],
-    "start_url": "https://gas-prod.github.io/VacationTimer",
+    "start_url": "/index.html",
     "lang": "fr",
     "background_color": "#ececec",
     "display": "standalone",
