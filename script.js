@@ -137,6 +137,8 @@ const departements = [
     {name: "Mayotte (976)"}
 ];
 
+locateBlock.classList.remove("locate-block1");
+
 //envoie de requete
 function RequestSend(url){
     request.open("GET", url);
@@ -425,22 +427,22 @@ function printTime(){
         dateMode = "date";
 
         if(selectedVac == "Pont de l'Ascension"){
-            text.innerHTML = "Le " + selectedVac + " est passé depuis le :"
+            text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est passé depuis le :"
         }else{
-            text.innerHTML = "Les " + selectedVac + " sont passées depuis le :"
+            text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont passées depuis le :"
         }
     }else{
         if(dateMode == "date"){
             if(selectedVac == "Pont de l'Ascension"){
-                text.innerHTML = "Le " + selectedVac + " est le :"
+                text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est le :"
             }else{
-                text.innerHTML = "Les " + selectedVac + " sont le :"
+                text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont le :"
             }
         }else{
             if(selectedVac == "Pont de l'Ascension"){
-                text.innerHTML = "Le " + selectedVac + " est dans :"
+                text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est dans :"
             }else{
-                text.innerHTML = "Les " + selectedVac + " sont dans :"
+                text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont dans :"
             }
         }
     }
@@ -460,7 +462,7 @@ function printTime(){
             month: 'long',
             day: 'numeric'
         })
-        timer.innerHTML = frenchDate.charAt(0).toUpperCase() + frenchDate.substr(1)
+        timer.innerHTML = frenchDate.charAt(0).toUpperCase() + frenchDate.substr(1);
     }
     if(depText != undefined && acaText != undefined && zoneText != undefined){
         depText.innerHTML = "Département : " + depName;

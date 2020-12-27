@@ -33,7 +33,7 @@ p
 {
     width: calc((100% - 30px) - (12.5vh - 60px));
     height: 100%;
-    border: 5px solid #053c5e;
+    border: 6px solid #314cb6;
     border-radius: 45px;
     position: relative;
 }
@@ -44,6 +44,7 @@ p
     top: 37.5%; right: 0; 
     width: 25%;
     height: 25%;
+    pointer-events: none;
 }
 .vacation-select
 {
@@ -74,18 +75,22 @@ p
     align-items: center;
     justify-content: center;
     outline: none;
-    transition: opacity 0.15s;
+    transition: background-color 0.15s;
     cursor: pointer;
-    border: 5px solid #053c5e;
+    border: 6px solid #314cb6;
 }
 .location-button:hover
 {
-    opacity: .5;
+    background-color: #314cb6;
 }
 .location-img
 {
     width: 45%;
     height: 45%;
+}
+.location-button:hover > .location-img
+{
+    content: url(img/location_icon2.svg);
 }
 .content
 {
@@ -113,7 +118,7 @@ p
     background-color: #ffffff;
     border-radius: 45px;
     cursor: pointer;
-    border: 5px solid #053c5e;
+    border: 6px solid #314cb6;
 }
 .timer
 {
@@ -164,7 +169,7 @@ p
     max-height: calc(100% - 175px);
     overflow-x: hidden;
     overflow-y: scroll;
-    border: 5px solid #053c5e;
+    border: 6px solid #314cb6;
 }
 .search-input
 {
@@ -183,7 +188,7 @@ p
 {
     padding: 5%;
     font-size: 3em;
-    border-top: 5px solid #053c5e8e;
+    border-top: 6px solid #314cb6a2;
     cursor: pointer;
     transition: all 0.15s;
 }
@@ -207,9 +212,10 @@ p
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid #053c5e;
+    border: 6px solid #314cb6;
 }
 .end-location:hover
 {
-    opacity: .5;
+    background-color: #314cb6;
+    color: white;
 }
