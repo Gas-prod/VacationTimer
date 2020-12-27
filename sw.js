@@ -1,5 +1,3 @@
-const swToolbox = require("./sw-toolbox");
-
 importScripts("sw-toolbox.js");
 toolbox.precache(["index.html", "style.css"]);
 
