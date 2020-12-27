@@ -2,6 +2,7 @@
 {
     font-family: "roboto";
     box-sizing: border-box;
+    color: #070707;
 }
 html, body, .cadre
 {
@@ -9,7 +10,6 @@ html, body, .cadre
     height: 100vh;
     margin: 0;
     padding: 0;
-    color: white;
     overflow: hidden;
 }
 p
@@ -19,7 +19,7 @@ p
 }
 .cadre
 {
-    background-color: #202225;
+    background-color: #ececec;
 }
 .header
 {
@@ -33,7 +33,7 @@ p
 {
     width: calc((100% - 30px) - (12.5vh - 60px));
     height: 100%;
-    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
+    border: 5px solid #053c5e;
     border-radius: 45px;
     position: relative;
 }
@@ -52,8 +52,7 @@ p
     outline: none;
     border: none;
     border-radius: 45px;
-    background-color: #40444b;
-    color: white;
+    background-color: #ffffff;
     font-size: 2.7em;
     padding: 30px 30px 30px 30px;
     appearance: none;
@@ -70,14 +69,14 @@ p
     padding: 0;
     border: none;
     border-radius: 45px;
-    background-color: #40444b;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     transition: opacity 0.15s;
     cursor: pointer;
-    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
+    border: 5px solid #053c5e;
 }
 .location-button:hover
 {
@@ -111,10 +110,10 @@ p
     align-items: center;
     width: 100%;
     height: 20%;
-    background-color: #40444b;
+    background-color: #ffffff;
     border-radius: 45px;
     cursor: pointer;
-    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
+    border: 5px solid #053c5e;
 }
 .timer
 {
@@ -134,16 +133,15 @@ p
 {
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
-    background-color: rgba(0, 0, 0, 0.74);
+    background-color: rgba(0, 0, 0, 0.55);
     display: block;
 }
 .locate-block 
 {
     position: absolute;
     top: 32.5%; left: 5%; right: 5%; bottom: 32.5%;
-    background-color:#202225;
+    background-color:#ececec;
     border-radius: 45px;
-    box-shadow: 16px 16px 25px 0px #000000b0;
 }
 .locate-block1
 {
@@ -159,14 +157,14 @@ p
     margin-top: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #40444b;
+    background-color: #ffffff;
     border-radius: 35px;
     overflow: hidden;
-    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
     overflow: hidden;
     max-height: calc(100% - 175px);
     overflow-x: hidden;
     overflow-y: scroll;
+    border: 5px solid #053c5e;
 }
 .search-input
 {
@@ -180,21 +178,18 @@ p
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    color: #fff;
-    /* box-shadow: 0px 10px 35px 20px #0b0b0d4f; */
 }
 .suggestions > div 
 {
     padding: 5%;
     font-size: 3em;
-    color: #fff;
-    border-top: 4px solid #202225;
+    border-top: 5px solid #053c5e8e;
     cursor: pointer;
     transition: all 0.15s;
 }
 .suggestions > div:hover 
 {
-    background-color: #2e3033;
+    background-color: #ececec;
 }
 .end-location
 {
@@ -206,14 +201,13 @@ p
     cursor: pointer;
     border: none;
     border-radius: 20px;
-    color: white;
-    background-color: #40444b;
+    background-color: #ffffff;
     font-size: 3em;
     transition: all 0.15s;
-    box-shadow: 16px 16px 25px 0px #0b0b0dc7;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 5px solid #053c5e;
 }
 .end-location:hover
 {
