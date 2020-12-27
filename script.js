@@ -492,3 +492,9 @@ function ChangeDateMode(){
         console.log(dateMode);
     }
 }
+
+//PWA
+
+if("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+};
