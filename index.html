@@ -11,6 +11,14 @@
         <meta name="theme-color" content="#314cb6">
         <link rel="apple-touch-icon" href="icon/192x192.png">
         <meta name="viewport" content="user-scalable=no">
+
+        <script>
+            window.addEventListener("load", function(){
+                if("serviceWorker" in navigator) {
+                    navigator.serviceWorker.register("/sw.js");
+                };
+            })
+        </script>
     </head>
     
     <body onload="Locate(), FindSchoolYear()">
