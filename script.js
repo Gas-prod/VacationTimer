@@ -145,15 +145,21 @@ window.addEventListener("beforeinstallprompt", function(e) {
     var triggerEvent = e;
     this.showPromptToInstall = true;
 
-    triggerEvent.userChoice.then(function(response){
-        if(response.outcome === "accepted"){
-            console.log("A2HS accepted");
-        }
-        else{
-            console.log("A2HS refused");
-        }
+    installprompt.addEventListener("click", function(e){
+        triggerEvent.prompt();
+
+        triggerEvent.userChoice.then(function(response){
+
+            if(response.outcome === "accepted") {
+                console.log("A2HS accepted");
+            } 
+            else{
+                console.log("A2HS refused");
+            }
+        })
     })
 })
+
 
 //APP
 
