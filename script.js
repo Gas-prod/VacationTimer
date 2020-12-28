@@ -482,6 +482,12 @@ window.onresize = function () {
         locateBlock.classList.remove("locate-block1");
     }
 }
+if (keyboardOpen == true) {
+    locateBlock.classList.add("locate-block1");
+}
+else {
+    locateBlock.classList.remove("locate-block1");
+}
 
 function ChangeDateMode() {
     if (dateMode == "timer") {
