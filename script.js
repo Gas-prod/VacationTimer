@@ -21,6 +21,7 @@ var minutesLeft;
 var secondsLeft;
 var keyboardOpen = false;
 var dateMode = "timer";
+var deferredPrompt;
 
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
@@ -492,3 +493,23 @@ function ChangeDateMode(){
         console.log(dateMode);
     }
 }
+
+//A2HS
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  
+    window.addEventListener('load', (e) => {
+        deferredPrompt.prompt();
+
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        })
+    })
+})
