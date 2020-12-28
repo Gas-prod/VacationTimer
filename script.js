@@ -21,7 +21,6 @@ var minutesLeft;
 var secondsLeft;
 var keyboardOpen = false;
 var dateMode = "timer";
-var deferredPrompt;
 
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
@@ -143,20 +142,16 @@ const departements = [
 window.addEventListener("beforeinstallprompt", function(e) {
     console.log("beforeinstallprompt");
 
-    e.preventDefault();
-    deferredPrompt = e;
-  
-    deferredPrompt.prompt();
+    var triggerEvent = e;
+    this.showPromptToInstall = true;
 
-    deferredPrompt.userChoice.then(function(choiceResult) {
-        console.log("prompt");
-
-        if (choiceResult.outcome === "accepted") {
-            console.log("User accepted the A2HS prompt");
-        }else{
-            console.log("User dismissed the A2HS prompt");
+    triggerEvent.userChoice.then(function(response){
+        if(response.outcome === "accepted"){
+            console.log("A2HS accepted");
         }
-        deferredPrompt = null;
+        else{
+            console.log("A2HS refused");
+        }
     })
 })
 
