@@ -140,7 +140,7 @@ const departements = [
 
 //A2HS
 
-window.addEventListener('beforeinstallprompt', (e) => {
+/*window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
     // Stash the event so it can be triggered later.
@@ -159,6 +159,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
             deferredPrompt = null;
         })
     })
+})*/
+
+window.addEventListener("beforeinstallprompt", function(e){
+    console.log("oui");
 })
 
 
