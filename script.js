@@ -138,6 +138,30 @@ const departements = [
     {name: "Mayotte (976)"}
 ];
 
+//A2HS
+
+window.addEventListener("beforeinstallprompt", function(e) {
+    console.log("beforeinstallprompt");
+
+    e.preventDefault();
+    deferredPrompt = e;
+  
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(function(choiceResult) {
+        console.log("prompt");
+
+        if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the A2HS prompt");
+        }else{
+            console.log("User dismissed the A2HS prompt");
+        }
+        deferredPrompt = null;
+    })
+})
+
+//APP
+
 locateBlock.classList.remove("locate-block1");
 
 //envoie de requete
@@ -493,21 +517,3 @@ function ChangeDateMode(){
         console.log(dateMode);
     }
 }
-
-//A2HS
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-  
-    deferredPrompt.prompt();
-
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-        } else {
-            console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-    })
-})
