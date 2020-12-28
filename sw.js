@@ -1,4 +1,4 @@
-importScripts("/sw-toolbox.js");
+importScripts("https://gas-prod.github.io/VacationTimer/sw-toolbox.js");
 /*toolbox.precache(["index.html", "style.css"]);
 
 toolbox.router.get("/*", toolbox.networkFirst, {
