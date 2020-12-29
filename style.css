@@ -219,3 +219,54 @@ p
     background-color: #314cb6;
     color: white;
 }
+.install-shadow
+{
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: none;
+}
+.install-alert
+{
+    background-color: #ececec;
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 30%;
+    border-top: 7px solid #314cb6;
+    padding: 40px;
+}
+.install-text
+{
+    font-size: 4em;
+    width: 80%;
+}
+.dismiss-button
+{
+    bottom: 40px;
+    left: 40px;
+}
+.install-button
+{
+    bottom: 40px;
+    right: 40px;
+}
+.install-alert > button
+{
+    position: absolute;
+    background-color: white;
+    border: 6px solid  #314cb6;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 85px;
+    font-size: 3em;
+    outline: none;
+}
+.install-alert > button:hover
+{
+    background-color: #314cb6;
+    color: white;
+}
