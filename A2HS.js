@@ -15,7 +15,6 @@ if (installAlertOpen == true) {
         installShadow.style.display = "block";
 
         installButton.addEventListener('click', (e) => {
-            installShadow.style.display = "none";
             // Show the prompt
             deferredPrompt.prompt();
             // Wait for the user to respond to the prompt
@@ -24,9 +23,11 @@ if (installAlertOpen == true) {
                 if (choiceResult.outcome === 'accepted') {
                     console.log('User accepted the A2HS prompt');
                     installAlertOpen = false
+                    installShadow.style.display = "none"
                 } else {
                     console.log('User dismissed the A2HS prompt');
                     installAlertOpen = false
+                    installShadow.style.display = "none"
                 }
                 deferredPrompt = null;
             })
@@ -35,6 +36,6 @@ if (installAlertOpen == true) {
 }
 
 dismissButton.addEventListener("click", function () {
-    installShadow.style.display = "block";
+    installShadow.style.display = "none";
     installAlertOpen = false;
 })
