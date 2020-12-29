@@ -336,7 +336,7 @@ function vacChange() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + " 00:00:00");
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
@@ -379,7 +379,7 @@ function VacationFind() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + " 00:00:00");
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
