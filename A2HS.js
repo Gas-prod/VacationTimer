@@ -22,17 +22,21 @@ if (installAlertOpen == true) {
 
                 if (choiceResult.outcome === 'accepted') {
                     console.log('User accepted the A2HS prompt');
-                    installAlertOpen = false
-                    installShadow.style.display = "none"
+                    installAlertOpen = false;
+                    installShadow.style.display = "none";
                 } else {
                     console.log('User dismissed the A2HS prompt');
-                    installAlertOpen = false
-                    installShadow.style.display = "none"
+                    installAlertOpen = false;
+                    installShadow.style.display = "none";
                 }
                 deferredPrompt = null;
             })
         })
     })
+}
+else
+{
+    installShadow.style.display = "none";
 }
 
 dismissButton.addEventListener("click", function () {
