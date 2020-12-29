@@ -6,7 +6,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
 
-    window.addEventListener('click', (e) => {
+    window.addEventListener('load', (e) => {
         // Show the prompt
         deferredPrompt.prompt();
         // Wait for the user to respond to the prompt
