@@ -1,17 +1,22 @@
+var deferredPrompt;
+
 window.addEventListener('beforeinstallprompt', (e) => {
-    var triggerEvent = e;
-    this.showPromptToInstall = true;
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
 
-    triggerEvent.prompt();
-
-    //user response
-    triggerEvent.userChoice.then((response) => {
-        if (response.outcome === 'accepted') {
-            console.log('A2HS accepted');
-        } 
-        else{
-            console.log('A2HS refused');
-        }
-    })
-})
-triggerEvent = null;
+    window.addEventListener('click', (e) => {
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+});

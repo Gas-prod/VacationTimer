@@ -21,7 +21,6 @@ var minutesLeft;
 var secondsLeft;
 var keyboardOpen = false;
 var dateMode = "timer";
-var deferredPrompt;
 
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
