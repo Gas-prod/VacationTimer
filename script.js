@@ -312,7 +312,7 @@ function vacChange() {
             vacArray = [];
 
             for (var i = 0; i < vacFind["records"].length; i++) {
-                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"] + " 00:00:00"));
+                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
             }
             console.log(vacArray);
 
@@ -336,7 +336,7 @@ function vacChange() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + " 00:00:00");
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
@@ -355,7 +355,7 @@ function VacationFind() {
             vacArray = [];
 
             for (var i = 0; i < vacFind["records"].length; i++) {
-                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"] + " 00:00:00"));
+                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
             }
             console.log(vacArray);
 
@@ -379,7 +379,7 @@ function VacationFind() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + " 00:00:00");
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
