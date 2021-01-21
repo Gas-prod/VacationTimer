@@ -60,6 +60,7 @@ p
     -moz-appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 .location-button
 {
@@ -78,6 +79,7 @@ p
     transition: background-color 0.15s;
     cursor: pointer;
     border: 6px solid #314cb6;
+    -webkit-tap-highlight-color: transparent;
 }
 .location-button:hover
 {
@@ -119,6 +121,7 @@ p
     border-radius: 45px;
     cursor: pointer;
     border: 6px solid #314cb6;
+    -webkit-tap-highlight-color: transparent;
 }
 .timer
 {
@@ -213,6 +216,7 @@ p
     align-items: center;
     justify-content: center;
     border: 6px solid #314cb6;
+    -webkit-tap-highlight-color: transparent;
 }
 .end-location:hover
 {
@@ -268,6 +272,7 @@ p
     outline: none;
     transition: all 0.15s;
     box-shadow: 0 0 10px #00000080;
+    -webkit-tap-highlight-color: transparent;
 }
 .install-button:hover
 {
