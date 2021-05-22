@@ -186,7 +186,7 @@ function Locate() {
         depName = depFind["features"][0]["properties"]["context"].split(", ")[1];
         console.log("code département : " + depCode);
         console.log("nom département : " + depName);
-        searchInput.value = depName + " (" + depCode + ")"; // Papa : que se passe t il s'il ne trouve pas le département. Il faut par exemple mettre un département par défaut
+        searchInput.value = depName + " (" + depCode + ")";
     }
 
     locateBlockShadow.style.display = "block";
@@ -312,7 +312,7 @@ function vacChange() {
             vacArray = [];
 
             for (var i = 0; i < vacFind["records"].length; i++) {
-                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"] + "T00:00:00"));
+                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
             }
             console.log(vacArray);
 
@@ -336,7 +336,7 @@ function vacChange() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + "T00:00:00");
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
@@ -345,7 +345,7 @@ function vacChange() {
     }
 }
 function VacationFind() {
-    if (selectedVac == "Prochaines vacances") { // Papa : mets en facteur, avant le "if" tout ce que tu peux. vacUrm est la même dans le "if" et dans le "else"
+    if (selectedVac == "Prochaines vacances") {
         vacUrl = "https://data.education.gouv.fr/api/records/1.0/search/?dataset=fr-en-calendrier-scolaire&q=&facet=start_date&facet=location&facet=annee_scolaire&refine.annee_scolaire=" + schoolYear + "&refine.location=" + acaName + "&exclude.population=Enseignants";
         RequestSend(vacUrl);
 
@@ -355,7 +355,7 @@ function VacationFind() {
             vacArray = [];
 
             for (var i = 0; i < vacFind["records"].length; i++) {
-                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"] + "T00:00:00"));
+                vacArray.push(new Date(vacFind["records"][i]["fields"]["start_date"]));
             }
             console.log(vacArray);
 
@@ -365,7 +365,7 @@ function VacationFind() {
             console.log(vacArray);
 
             vacDate = vacArray.find(element => element > date);
-            console.log(vacDate); // Papa : à sortir du "if"
+            console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
             console.log(zone);
@@ -379,7 +379,7 @@ function VacationFind() {
             vacFind = request.response;
             console.log(vacFind);
 
-            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"] + "T00:00:00");
+            vacDate = new Date(vacFind["records"][0]["fields"]["start_date"]);
             console.log(vacDate);
 
             zone = vacFind["records"][0]["fields"]["zones"];
