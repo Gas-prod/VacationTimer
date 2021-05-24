@@ -202,12 +202,8 @@ function Locate() {
         var input = searchInput.value;
         suggestionsPanel.innerHTML = "";
 
-        if (input != ""){
-            var input = searchInput.value.replace(/^./, searchInput.value[0].toUpperCase());
-        }
-
         var suggestions = departements.filter(function (departement) {
-            return departement.name.startsWith(input);
+            return departement.name.toLowerCase().startsWith(input.toLowerCase());
         });
 
         suggestions.forEach(function (suggested) {
@@ -249,12 +245,8 @@ function Locate() {
         var input = searchInput.value;
         suggestionsPanel.innerHTML = "";
 
-        if (input != ""){
-            var input = searchInput.value.replace(/^./, searchInput.value[0].toUpperCase());
-        }
-
         var suggestions = departements.filter(function (departement) {
-            return departement.name.startsWith(input);
+            return departement.name.toLowerCase().startsWith(input.toLowerCase());
         });
 
         suggestions.forEach(function (suggested) {
