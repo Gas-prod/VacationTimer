@@ -241,7 +241,7 @@ function Locate() {
         }
         else
         {
-            searchInput.style.borderBottom = "2px solid #ddebf8";
+            searchInput.style.borderBottom = "2px solid var(--background-color)";
         }
     })
     //quand on clique sur l'input
@@ -288,7 +288,7 @@ function Locate() {
         }
         else
         {
-            searchInput.style.borderBottom = "2px solid #ddebf8";
+            searchInput.style.borderBottom = "2px solid var(--background-color)";
         }
     })
 }
@@ -460,22 +460,22 @@ function printTime() {
         dateMode = "date";
 
         if (selectedVac == "Pont de l'Ascension") {
-            text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est passé depuis le :"
+            text.innerHTML = `Le ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} est passé depuis <span class="no-wrap">le :</span>`;
         } else {
-            text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont passées depuis le :"
+            text.innerHTML = `Les ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} sont passées depuis <span class="no-wrap">le :</span>`;
         }
     } else {
         if (dateMode == "date") {
             if (selectedVac == "Pont de l'Ascension") {
-                text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est le :"
+                text.innerHTML = `Le ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} est <span class="no-wrap">le :</span>`;
             } else {
-                text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont le :"
+                text.innerHTML = `Les ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} sont <span class="no-wrap">le :</span>`;
             }
         } else {
             if (selectedVac == "Pont de l'Ascension") {
-                text.innerHTML = "Le " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " est dans :"
+                text.innerHTML = `Le ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} est <span class="no-wrap">dans :</span>`;
             } else {
-                text.innerHTML = "Les " + selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1) + " sont dans :"
+                text.innerHTML = `Les ${selectedVac.charAt(0).toLowerCase() + selectedVac.substr(1)} sont <span class="no-wrap">dans :</span>`;
             }
         }
     }
@@ -504,22 +504,22 @@ function printTime() {
     }
 }
 
-window.onresize = function () {
-    if (keyboardOpen == false) {
-        keyboardOpen = true;
-        locateBlock.classList.add("locate-block1");
-    }
-    else {
-        keyboardOpen = false;
-        locateBlock.classList.remove("locate-block1");
-    }
-}
-if (keyboardOpen == true) {
-    locateBlock.classList.add("locate-block1");
-}
-else {
-    locateBlock.classList.remove("locate-block1");
-}
+// window.onresize = function () {
+//     if (keyboardOpen == false) {
+//         keyboardOpen = true;
+//         locateBlock.classList.add("locate-block1");
+//     }
+//     else {
+//         keyboardOpen = false;
+//         locateBlock.classList.remove("locate-block1");
+//     }
+// }
+// if (keyboardOpen == true) {
+//     locateBlock.classList.add("locate-block1");
+// }
+// else {
+//     locateBlock.classList.remove("locate-block1");
+// }
 
 function ChangeDateMode() {
     if (dateMode == "timer") {

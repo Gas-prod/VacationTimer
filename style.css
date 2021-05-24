@@ -1,3 +1,14 @@
+:root
+{
+    --main-color: #0049F5;
+    --background-color: #DDEBF8;
+    --text-color: #272932;
+    --shadow-color: rgba(0, 73, 245, 0.3);
+
+    --little-font: 1.5em;
+    --medium-font: 1.8em;
+    --large-font: 2.5em;
+}
 *
 {
     margin: 0;
@@ -11,6 +22,7 @@
 .no-wrap
 {
     white-space: nowrap;
+    font-weight: inherit;
 }
 html, body, .cadre
 {
@@ -19,7 +31,7 @@ html, body, .cadre
 }
 .cadre
 {
-    background-color: #ddebf8;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +54,7 @@ html, body, .cadre
     height: 100%;
     border-radius: 25px;
     position: relative;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
     transition: transform 0.15s ease-in-out;
 }
 .select:hover
@@ -67,8 +79,8 @@ html, body, .cadre
     outline: none;
     border: none;
     border-radius: 25px;
-    background-color: #ffffff;
-    font-size: 1.5em;
+    background-color: white;
+    font-size: var(--little-font);
     padding: 15px;
     padding-right: 65px;
     appearance: none;
@@ -76,7 +88,7 @@ html, body, .cadre
     -webkit-appearance: none;
     cursor: pointer;
     text-overflow: ellipsis;
-    color: #272932;
+    color: var(--text-color);
 }
 .location-button
 {
@@ -87,14 +99,14 @@ html, body, .cadre
     padding: 0;
     border: none;
     border-radius: 25px;
-    background-color: #ffffff;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     transition: transform 0.15s ease-in-out;
     cursor: pointer;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
 }
 .location-button:hover
 {
@@ -128,8 +140,8 @@ html, body, .cadre
 .text
 {
     text-align: center;
-    font-size: 1.8em;
-    color: #272932;
+    font-size: var(--medium-font);
+    color: var(--text-color);
     font-weight: 600;
 }
 .timer-box
@@ -140,10 +152,10 @@ html, body, .cadre
     width: 100%;
     max-width: 450px;
     height: 150px;
-    background-color: #0085cc;
+    background-color: var(--main-color);
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0px 0px 25px 0px #0085cc66;
+    box-shadow: 0px 0px 25px 0px var(--shadow-color);
     padding: 15px;
     transition: transform 0.2s ease-in-out;
 }
@@ -154,7 +166,7 @@ html, body, .cadre
 .timer
 {
     text-align: center;
-    font-size: 2.5em;
+    font-size: var(--large-font);
     font-weight: 600;
     color: white;
 }
@@ -170,9 +182,9 @@ html, body, .cadre
 }
 .values > p
 {
-    font-size: 1.8em;
+    font-size: var(--medium-font);
     text-align: center;
-    color: #272932;
+    color: var(--text-color);
     font-weight: 600;
 }
 .values > div
@@ -200,7 +212,7 @@ html, body, .cadre
     transform: translate(-50%, -50%);
     width: 450px;
     height: 400px;
-    background-color: #ddebf8;
+    background-color: var(--background-color);
     border-radius: 25px;
     padding: 15px;
 }
@@ -220,7 +232,7 @@ html, body, .cadre
     border-radius: 15px;
     margin: auto;
     overflow: hidden;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
 }
 .search-input
 {
@@ -229,12 +241,12 @@ html, body, .cadre
     border: none;
     background-color: transparent;
     outline: none;
-    font-size: 1.5em;
+    font-size: var(--little-font);
     padding: 15px;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    color: #272932;
+    color: var(--text-color);
 }
 .suggestions
 {
@@ -246,11 +258,11 @@ html, body, .cadre
 {
     width: 100%;
     padding: 15px;
-    font-size: 1.5em;
-    border-bottom: 2px solid #ddebf8;
+    font-size: var(--little-font);
+    border-bottom: 2px solid var(--background-color);
     cursor: pointer;
     transition: all 0.15s;
-    color: #272932;
+    color: var(--text-color);
 }
 .suggestions > div:last-child
 {
@@ -269,11 +281,11 @@ html, body, .cadre
     bottom: 15px;
     border: none;
     border-radius: 15px;
-    background-color: #0085cc;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    background-color: var(--main-color);
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
     cursor: pointer;
     color: white;
-    font-size: 1.5em;
+    font-size: var(--little-font);
     font-weight: 600;
     transition: transform 0.2s ease-in-out;
 }
@@ -290,11 +302,11 @@ html, body, .cadre
     bottom: 15px;
     border: none;
     border-radius: 15px;
-    background-color: #0085cc;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    background-color: var(--main-color);
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
     cursor: not-allowed;
     color: white;
-    font-size: 1.5em;
+    font-size: var(--little-font);
     font-weight: 600;
     opacity: 0.7;
 }
@@ -315,23 +327,23 @@ html, body, .cadre
 }
 .install-text
 {
-    font-size: 1.5em;
+    font-size: var(--little-font);
     font-weight: 600;
-    color: #272932;
+    color: var(--text-color);
 }
 .dismiss-button
 {
     bottom: 15px;
     left: 15px;
     background-color: white;
-    border: 3px solid  #0085cc;
-    color: #272932;
+    border: 3px solid  var(--main-color);
+    color: var(--text-color);
 }
 .install-button
 {
     bottom: 15px;
     right: 15px;
-    background-color: #0085cc;
+    background-color: var(--main-color);
     color: white;
     border: none;
 }
@@ -341,12 +353,12 @@ html, body, .cadre
     border-radius: 15px;
     width: 130px;
     height: 40px;
-    font-size: 1.5em;
+    font-size: var(--little-font);
     font-weight: 600;
     outline: none;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-    box-shadow: 0px 0px 15px 0px #0085cc33;
+    box-shadow: 0px 0px 15px 0px var(--shadow-color);
 }
 .install-button:hover
 {
@@ -376,4 +388,47 @@ html, body, .cadre
 {
     scrollbar-width: thin;
     scrollbar-color: rgba(39, 41, 50, 0.3) transparent;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 500px)
+{
+    :root
+    {
+        --little-font: 1.5em;
+        --medium-font: 1.5em;
+        --large-font: 1.9em;
+    }
+
+    /* CONTENT */
+
+    .text
+    {
+        text-align: left;
+    }
+    .values > p
+    {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* LOCATE BLOCK */
+
+    .locate-block
+    {
+        width: calc(100% - 60px);
+    }
+}
+
+@media only screen and (max-height: 460px)
+{
+    .locate-block
+    {
+        height: calc(100% - 60px);
+    }
+    .suggestions
+    {
+        max-height: calc(100vh - 205px);
+    }
 }
