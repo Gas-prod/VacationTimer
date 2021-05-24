@@ -323,7 +323,7 @@ html, body, .cadre
     height: 200px;
     padding: 15px;
     border-radius: 25px;
-    display: none;
+    display: block;
 }
 .install-text
 {
@@ -351,8 +351,8 @@ html, body, .cadre
 {
     position: absolute;
     border-radius: 15px;
-    width: 130px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     font-size: var(--little-font);
     font-weight: 600;
     outline: none;
@@ -418,6 +418,24 @@ html, body, .cadre
     .locate-block
     {
         width: calc(100% - 60px);
+    }
+}
+@media only screen and (max-width: 400px)
+{
+    .install-alert
+    {
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+@media only screen and (max-width: 350px)
+{
+    .install-alert > button
+    {
+        width: calc(50% - 22px);
     }
 }
 
