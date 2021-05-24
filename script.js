@@ -25,7 +25,7 @@ var dateMode = "timer";
 const locateBlockShadow = document.querySelector(".shadow");
 const searchInput = document.querySelector(".search-input");
 const suggestionsPanel = document.querySelector(".suggestions");
-const endLocation = document.querySelector(".end-location");
+const endLocation = document.querySelector("#end-location");
 const vacSelect = document.querySelector(".vacation-select");
 const timer = document.querySelector(".timer");
 const timerBox = document.querySelector(".timer-box");
@@ -187,6 +187,10 @@ function Locate() {
         console.log("code département : " + depCode);
         console.log("nom département : " + depName);
         searchInput.value = depName + " (" + depCode + ")";
+
+        endLocation.classList.add("end-location");
+        endLocation.classList.remove("end-location-disabled");
+        endLocation.title = "";
     }
 
     locateBlockShadow.style.display = "block";
@@ -198,6 +202,10 @@ function Locate() {
         var input = searchInput.value;
         suggestionsPanel.innerHTML = "";
 
+        if (input != ""){
+            var input = searchInput.value.replace(/^./, searchInput.value[0].toUpperCase());
+        }
+
         var suggestions = departements.filter(function (departement) {
             return departement.name.startsWith(input);
         });
@@ -216,12 +224,24 @@ function Locate() {
                 console.log(depName);
                 console.log(depCode);
 
+                endLocation.classList.add("end-location");
+                endLocation.classList.remove("end-location-disabled");
+                endLocation.title = "";
+
                 EndLocation();
             });
         });
 
-        if (input === "") {
+        if (input === ""){
             suggestionsPanel.innerHTML = "";
+        }
+
+        if (suggestionsPanel.innerHTML == ""){
+            searchInput.style.border = "none";
+        }
+        else
+        {
+            searchInput.style.borderBottom = "2px solid #ddebf8";
         }
     })
     //quand on clique sur l'input
@@ -229,6 +249,10 @@ function Locate() {
         var input = searchInput.value;
         suggestionsPanel.innerHTML = "";
 
+        if (input != ""){
+            var input = searchInput.value.replace(/^./, searchInput.value[0].toUpperCase());
+        }
+
         var suggestions = departements.filter(function (departement) {
             return departement.name.startsWith(input);
         });
@@ -247,6 +271,10 @@ function Locate() {
                 console.log(depName);
                 console.log(depCode);
 
+                endLocation.classList.add("end-location");
+                endLocation.classList.remove("end-location-disabled");
+                endLocation.title = "";
+
                 EndLocation();
             });
         });
@@ -254,15 +282,20 @@ function Locate() {
         if (input === "") {
             suggestionsPanel.innerHTML = "";
         }
+
+        if (suggestionsPanel.innerHTML == ""){
+            searchInput.style.border = "none";
+        }
+        else
+        {
+            searchInput.style.borderBottom = "2px solid #ddebf8";
+        }
     })
 }
 
 //quand on clique sur terminer
 function EndLocation() {
-    if (depCode == null) {
-        alert("Veuillez renseigner votre département");
-    }
-    else {
+    if (depCode) {
         locateBlockShadow.style.display = "none";
 
         //creation de l'url du referenciel geographique
@@ -449,11 +482,11 @@ function printTime() {
 
     if (dateMode == "timer") {
         if (daysLeft == 1) {
-            timer.innerHTML = daysLeft + " jour - " + hoursLeft + " h - " + minutesLeft + " min";
+            timer.innerHTML = `<span class="no-wrap">${daysLeft} jour</span> - <span class="no-wrap">${hoursLeft} h</span> - <span class="no-wrap">${minutesLeft} min</span>`;
         }
         else {
-            timer.innerHTML = daysLeft + " jours - " + hoursLeft + " h - " + minutesLeft + " min";
-        }
+            timer.innerHTML = `<span class="no-wrap">${daysLeft} jours</span> - <span class="no-wrap">${hoursLeft} h</span> - <span class="no-wrap">${minutesLeft} min</span>`;
+        };
     }
     else {
         var frenchDate = vacDate.toLocaleString('fr-FR', {
@@ -492,9 +525,11 @@ function ChangeDateMode() {
     if (dateMode == "timer") {
         dateMode = "date";
         console.log(dateMode);
+        timerBox.title = "Clic ici pour afficher le temps q'il reste";
     }
     else if (dateMode == "date" && Math.sign(vacDate - date) == 1) {
         dateMode = "timer";
         console.log(dateMode);
+        timerBox.title = "Clic ici pour afficher la date";
     }
 }

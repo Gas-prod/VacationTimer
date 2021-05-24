@@ -1,78 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <title>Vacation Timer</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
-        <link rel="manifest" href="manifest.json">
-        <link rel="icon" type="image/png" sizes="512x512" href="icon/512x512.png">
-        <meta name="theme-color" content="#314cb6">
-        <link rel="apple-touch-icon" href="icon/192x192.png">
-        <meta name="viewport" content="user-scalable=no">
-        <meta name="Description" content="Cette application web permet de savoir dans combien de temps sont les prochaines vacances scolaires selon le département renseigné par l'utilisateur.">
-
-        <script>
-            window.addEventListener("load", function(){
-                if("serviceWorker" in navigator) {
-                    navigator.serviceWorker.register("/VacationTimer/sw.js");
-                };
-            })
-        </script>
-    </head>
+<head>
+    <title>Vacation Timer</title>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#0085cc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Grace à cette application web, sachez rapidement dans combien de temps sont vos vacances scolaires !">
     
-    <body onload="Locate(), FindSchoolYear()">
-        <div class="cadre">
-            <div class="header">  
-                <div class="select">
-                    <select name="vacances" class="vacation-select" onchange="vacChange()">
-                        <option value="next">Prochaines vacances</option>
-                        <option value="toussaint">Vacances de la Toussaint</option>
-                        <option value="noel">Vacances de Noël</option>
-                        <option value="hiver">Vacances d'Hiver</option>
-                        <option value="printemps">Vacances de Printemps</option>
-                        <option value="ascension">Pont de l'Ascension</option>
-                        <option value="ete">Vacances d'Été</option>
-                    </select>
-                    <img src="img/arrow_icon.svg" alt="" class="select-arrow">
-                </div>     
-                
-                <button class="location-button" onclick="Locate()"><img src="img/location_icon.svg" alt="" class="location-img"></img></button>
-            </div>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 
-            <div class="content">
-                <p class="text">Les prochaines vacances sont dans :</p>
-                <div class="timer-box" onclick="ChangeDateMode()"><p class="timer">00 jours - 00 h - 00 min</p></div>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" sizes="512x512" href="icon/512x512.png">
+    <link rel="apple-touch-icon" href="icon/192x192.png">
+    
+    <script>
+        window.addEventListener("load", function(){
+            if("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/VacationTimer/sw.js");
+            };
+        })
+    </script>
+</head>
 
-                <div class="values">
-                    <p id="dep-name">Département : ...</p>
-                    <p id="aca-name">Académie : ...</p>
-                    <p id="zone">Zone : ...</p>
-                </div>
-            </div>
-            <div class="shadow">
-                <div class="locate-block">
-                    <div class="departement-select">  
-                        <input class="search-input" type="text" placeholder="Votre département..." spellcheck="false"/>
-                        <div class="suggestions"></div>
-                    </div>
-                
-                    <button class="end-location" onclick="EndLocation()">Valider</button>
-                </div>
-            </div>
-
-            <div class="install-shadow">
-                <div class="install-alert">
-                    <p class="install-text">Voulez vous installer l'application VacTimer ?</p>
-                    <button class="dismiss-button">Non merci</button>
-                    <button class="install-button">Installer</button>
-                </div>
-            </div>
+<body onload="Locate(), FindSchoolYear()">
+    <div class="cadre">
+        <div class="header">  
+            <div class="select">
+                <select name="vacances" class="vacation-select" onchange="vacChange()">
+                    <option value="next">Prochaines vacances</option>
+                    <option value="toussaint">Vacances de la Toussaint</option>
+                    <option value="noel">Vacances de Noël</option>
+                    <option value="hiver">Vacances d'Hiver</option>
+                    <option value="printemps">Vacances de Printemps</option>
+                    <option value="ascension">Pont de l'Ascension</option>
+                    <option value="ete">Vacances d'Été</option>
+                </select>
+                <img src="img/arrow_icon.svg" alt="" class="select-arrow">
+            </div>     
             
+            <button class="location-button" onclick="Locate()"><img src="img/location_icon.svg" alt="" class="location-img"></img></button>
         </div>
 
-        <script src="script.js"></script>
-        <script src="A2HS.js"></script>
-    </body>
+        <div class="content">
+            <div class="text-box"><p class="text">Les prochaines vacances sont dans :</p></div>
+            <div class="timer-box" onclick="ChangeDateMode()" title="Clic ici pour afficher la date"><p class="timer"><span class="no-wrap">00 jours</span> - <span class="no-wrap">00 h</span> - <span class="no-wrap">00 min</span></p></div>
+
+            <div class="values">
+                <p id="dep-name">Département : ...</p>
+                <div></div>
+                <p id="aca-name">Académie : ...</p>
+                <div></div>
+                <p id="zone">Zone : ...</p>
+            </div>
+        </div>
+        <div class="shadow">
+            <div class="locate-block">
+                <div class="departement-select">  
+                    <input class="search-input" type="text" placeholder="Votre département..." spellcheck="false"/>
+                    <div class="suggestions"></div>
+                </div>
+            
+                <button id="end-location" class="end-location-disabled" title="Veuillez renseigner votre département." onclick="EndLocation()">Valider</button>
+            </div>
+        </div>
+
+        <div class="install-alert">
+            <p class="install-text">Voulez vous installer l'application VacTimer ?</p>
+            <button class="dismiss-button">Non merci</button>
+            <button class="install-button">Installer</button>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+    <script src="A2HS.js"></script>
+</body>
 </html>
