@@ -19,7 +19,6 @@ var daysLeft;
 var hoursLeft;
 var minutesLeft;
 var secondsLeft;
-var keyboardOpen = false;
 var dateMode = "timer";
 
 const locateBlockShadow = document.querySelector(".shadow");
@@ -289,6 +288,7 @@ function Locate() {
 function EndLocation() {
     if (depCode) {
         locateBlockShadow.style.display = "none";
+        locateBlock.classList.remove("locate-block1");
 
         //creation de l'url du referenciel geographique
         acaUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-referentiel-geographique&q=&rows=1&facet=aca_nom&facet=dep_code&refine.dep_code=" + depCode;
@@ -496,22 +496,13 @@ function printTime() {
     }
 }
 
-// window.onresize = function () {
-//     if (keyboardOpen == false) {
-//         keyboardOpen = true;
-//         locateBlock.classList.add("locate-block1");
-//     }
-//     else {
-//         keyboardOpen = false;
-//         locateBlock.classList.remove("locate-block1");
-//     }
-// }
-// if (keyboardOpen == true) {
-//     locateBlock.classList.add("locate-block1");
-// }
-// else {
-//     locateBlock.classList.remove("locate-block1");
-// }
+// Ouverture / fermeture de la search bar
+searchInput.addEventListener("focus", function(){
+    locateBlock.classList.add("locate-block1");
+})
+searchInput.addEventListener("blur", function(){
+    locateBlock.classList.remove("locate-block1");
+})
 
 function ChangeDateMode() {
     if (dateMode == "timer") {
