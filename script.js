@@ -312,7 +312,7 @@ function FindSchoolYear() {
     var lastYear = date.getFullYear() - 1;
     var nextYear = date.getFullYear() + 1;
 
-    if (date.getMonth() < 8) {
+    if (date.getMonth() < 6 && date.getDay() < 7) {
         schoolYear = lastYear + "-" + year;
     }
     else {
